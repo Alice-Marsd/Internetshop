@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.css}">
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <!--<script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>-->
+    <script th:src="@{/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+
+<div class="container">
+    <h1>个人设置页面<a type="button" class="btn btn-outline-danger" th:href="@{/mySet/pwd/}+${user_id}">修改密码</a></h1>
+
+    <form th:action="@{/mySet}" method="post">
+        <input type="hidden" name="user_id" th:value="${user_id}">
+        <input type="hidden" name="user_addrid" th:value="${addr.getUser_addrid()}">
+        <div class="form-group">
+            <label for="name">用户名:</label>
+            <input type="text" name="user_name" class="form-control" id="name" placeholder="Enter name" th:value="${user.getUser_name()}">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="text" name="user_email" class="form-control" id="email" placeholder="Enter email" th:value="${user.getUser_email()}">
+        </div>
+        <div class="form-group">
+            <label for="sex">性别:</label>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" id="sex" type="radio" name="user_sex"  value="M" th:checked="${user.getUser_sex()=='M'}?${user.user_sex=='M'}">
+                <label class="form-check-label">男</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" id="sex" type="radio" name="user_sex"  value="F" th:checked="${user.getUser_sex()=='F'}?${user.user_sex=='F'}">
+                <label class="form-check-label">女</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="phone">手机号:</label>
+            <input name="user_phone" type="text" class="form-control" id="phone" placeholder="Enter phone-number" th:value="${user.getUser_phone()}">
+        </div>
+        <div class="form-group">
+            <label for="card">银行卡号:</label>
+            <input name="user_card" type="text" class="form-control" id="card" placeholder="Enter card" th:value="${user.getUser_idcard()}">
+        </div>
+        <div class="form-group">
+            <label for="real-name">真实名字:</label>
+            <input name="real_name" type="text" class="form-control" id="real-name" placeholder="Enter real-name" th:value="${user.getUser_realname()}">
+        </div>
+
+        <div class="form-group">
+            <label for="receive-phone">收件人手机号:</label>
+            <input name="receive_phone" type="text" class="form-control" id="receive-phone" placeholder="Enter phone-number" th:value="${addr.getReceive_phone()}">
+        </div>
+
+        <div class="form-group">
+            <label for="receive">收货地址</label>
+            <input name="receive" type="text" class="form-control" id="receive" placeholder="Enter receive address"th:value="${addr.getReceive_addr()}">
+            <input name="detail" type="text" class="form-control"  placeholder="Enter detail address" th:value="${addr.getDetail_addr()}">
+        </div>
+        <div class="form-group">
+            <label for="default">默认地址:</label>
+            <input name="default" type="text" class="form-control" id="default" placeholder="Enter default address" th:value="${addr.getDetail_addr()}">
+        </div>
+        <button type="submit" class="btn btn-primary">确认修改</button>
+    </form>
+</div>
+
+
+</body>
+</html>

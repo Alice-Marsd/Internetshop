@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>我的页面</title>
+    <link href="#" th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.css}" rel="stylesheet">
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <script th:src="@{/webjars/bootstrap/4.4.1-1/js/bootstrap.min.js}"></script>
+</head>
+<body>
+
+<h1 name="user_name" type="text" th:text="${user.getUser_name()}">用户名</h1>
+<img src="#" th:src="${user.getUser_head()}" class="img-circle" style="width: 140px;height: 140px">
+<hr/>
+<form  action="/my/head"  method="post" enctype="multipart/form-data">
+    <input type="hidden" name="user_id" th:value="${user_id}">
+    <p>头像<input type="file" name="user_head"></p ><br/>
+    <p><input type="submit" value="提交"></p >
+</form>
+<hr/>
+<a name="nySet" type="button" class="btn btn-link " th:href="@{/mySet/}+${user_id}">
+    个人设置
+</a>
+<ul class="nav nav-pills">
+    <li class="active"><a name="all" type="button" class="btn btn-default" th:href="@{/orders/}+${user_id}">所有订单</a></li>
+    <li><a name="unPaid" type="button" class="btn btn-danger" th:href="@{/orders/0/}+${user_id}" value="0">待支付</a></li>
+    <li><a name="unSend" type="button" class="btn btn-warning" th:href="@{/orders/1/}+${user_id}" value="1">待发货</a></li>
+    <li><a name="unReceive" type="button" class="btn btn-info" th:href="@{/orders/2/}+${user_id}" value="2">待收货</a></li>
+    <li><a name="unComment" type="button" class="btn btn-success" th:href="@{/orders/3/}+${user_id}" value="3">待评价</a></li>
+    <li><a name="myFoot" type="button" class="btn btn-primary" th:href="@{/myFoot/}+${user_id}">我的足迹</a></li>
+</ul>
+</body>
+</html>

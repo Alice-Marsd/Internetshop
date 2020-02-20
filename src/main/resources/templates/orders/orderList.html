@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset=" UTF-8"/>">
+    <title>Title</title>
+    <link href="#" th:href="@{/webjars/bootstrap/4.4.1-1/css/bootstrap.css}" rel="stylesheet">
+</head>
+<body>
+        <h1 th:text="${statueMsg}"></h1>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+
+                    <th>订单编号</th>
+                    <th>商品编号</th>
+                    <th>用户名称</th>
+                    <th>总数</th>
+                    <th>订单状态</th>
+                    <th>创建日期</th>
+                    <th th:if="${statueMsg=='全部订单'}">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="order:${orders}">
+
+                    <td th:text="${order.getOrder_id()}"></td>
+                    <td th:text="${order.getGoods_id()}"></td>
+                    <td th:text="${order.getUser_id()}"></td>
+                    <td th:text="${order.getSum()}"></td>
+                    <td th:text="${order.getState()}"></td>
+                    <td th:text="${order.getDate()}" ></td>
+                    <td >
+                        <a th:if="${statueMsg=='全部订单'}" th:href="@{/orders/del/} + ${order.getOrder_id()}+@{/}+${user_id}" class="btn btn-danger">删除</a>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </div>
+</body>
+</html>
