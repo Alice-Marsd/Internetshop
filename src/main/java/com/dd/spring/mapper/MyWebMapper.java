@@ -31,7 +31,7 @@ public interface MyWebMapper {
     public void deleteOrder(Integer order_id);
 
     @Update("update users SET user_head=#{user_head} where user_id=#{user_id}")
-    public void updateUserHead(Users user);
+    public Integer updateUserHead(Users user);
 
 
 

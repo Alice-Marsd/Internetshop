@@ -4,7 +4,6 @@ package com.dd.spring.bean;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
-import java.sql.Timestamp;
 @Component
 public class Users {
 
